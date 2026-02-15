@@ -1,6 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import heroMockup from "@/assets/hero-mockup.png";
+import screenSplash from "@/assets/screen-splash.png";
+import screenHome from "@/assets/screen-home.png";
+import screenSearch from "@/assets/screen-search.png";
+
+const PhoneMockup = ({ src, alt, className = "" }: { src: string; alt: string; className?: string }) => (
+  <div className={`relative ${className}`}>
+    <div className="relative rounded-[2.5rem] border-[6px] border-foreground/80 bg-foreground/80 shadow-2xl shadow-black/30 overflow-hidden aspect-[9/19.5]">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[35%] h-[22px] bg-foreground/80 rounded-b-2xl z-10" />
+      <img src={src} alt={alt} className="w-full h-full object-cover object-top" loading="eager" />
+    </div>
+  </div>
+);
 
 const Hero = () => {
   return (
@@ -62,19 +73,37 @@ const Hero = () => {
           </a>
         </motion.div>
 
-        {/* Hero Mockup */}
+        {/* Hero Mockup - Three Phones */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="mt-16 w-full max-w-5xl"
+          className="mt-16 w-full max-w-4xl flex items-center justify-center gap-4 md:gap-8"
         >
-          <img
-            src={heroMockup}
-            alt="WADE App screens showcasing Food, Taxi, and Market services"
-            className="w-full rounded-2xl animate-float"
-            loading="eager"
-          />
+          <motion.div
+            initial={{ opacity: 0, x: -40, rotate: -6 }}
+            animate={{ opacity: 1, x: 0, rotate: -6 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="w-[28%] md:w-[25%]"
+          >
+            <PhoneMockup src={screenSplash} alt="WADE Splash Screen" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="w-[36%] md:w-[32%] z-10 animate-float"
+          >
+            <PhoneMockup src={screenHome} alt="WADE Home Screen" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 40, rotate: 6 }}
+            animate={{ opacity: 1, x: 0, rotate: 6 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="w-[28%] md:w-[25%]"
+          >
+            <PhoneMockup src={screenSearch} alt="WADE Search Screen" />
+          </motion.div>
         </motion.div>
       </div>
 
