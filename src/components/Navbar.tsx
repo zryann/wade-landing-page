@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoLight from "@/assets/logo-light.svg";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -30,8 +29,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <Link to="/" className="flex items-center">
-          <img src={logoLight} alt="WADE" className="h-8" />
+        <Link href="/" className="flex items-center">
+          <img src="/logo-light.svg" alt="WADE" className="h-8" />
         </Link>
 
         {/* Desktop Nav */}

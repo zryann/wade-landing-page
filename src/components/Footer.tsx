@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import logoLight from "@/assets/logo-light.svg";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -7,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
-            <img src={logoLight} alt="WADE" className="h-8 mb-4" />
+            <img src="/logo-light.svg" alt="WADE" className="h-8 mb-4" />
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Your all-in-one delivery platform for Food, Taxi, and Market
               services.
@@ -53,12 +52,12 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/privacy" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
+                <Link href="/privacy" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
+                <Link href="/terms" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
                   Terms & Conditions
                 </Link>
               </li>

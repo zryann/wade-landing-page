@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import screenSplash from "@/assets/screen-splash.png";
-import screenHome from "@/assets/screen-home.png";
-import screenSearch from "@/assets/screen-search.png";
+
+const screenSplash = "/screen-splash.png";
+const screenHome = "/screen-home.png";
+const screenSearch = "/screen-search.png";
 
 const PhoneMockup = ({ src, alt, className = "" }: { src: string; alt: string; className?: string }) => (
   <div className={`relative ${className}`}>
-    <div className="relative rounded-[2.5rem] border-[6px] border-foreground/80 bg-foreground/80 shadow-2xl shadow-black/30 overflow-hidden aspect-[9/19.5]">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[35%] h-[22px] bg-foreground/80 rounded-b-2xl z-10" />
+    <div className="relative aspect-[9/19.5] overflow-hidden rounded-[clamp(1.05rem,5.3vw,2.5rem)] border-[clamp(2px,0.75vw,6px)] border-foreground/80 bg-foreground/80 shadow-2xl shadow-black/30">
+      <div className="absolute top-0 left-1/2 z-10 h-[clamp(9px,3.1vw,22px)] w-[clamp(30%,34%,35%)] -translate-x-1/2 rounded-b-[clamp(7px,2.2vw,14px)] bg-foreground/80" />
       <img src={src} alt={alt} className="w-full h-full object-cover object-top" loading="eager" />
     </div>
   </div>
@@ -78,13 +79,13 @@ const Hero = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="mt-16 w-full max-w-4xl flex items-center justify-center gap-4 md:gap-8"
+          className="mt-14 flex w-full max-w-4xl items-end justify-center gap-0 px-2 sm:mt-16 sm:px-0 sm:gap-4 md:gap-8"
         >
           <motion.div
             initial={{ opacity: 0, x: -40, rotate: -6 }}
             animate={{ opacity: 1, x: 0, rotate: -6 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="w-[28%] md:w-[25%]"
+            className="w-[clamp(76px,29vw,220px)] -mr-[clamp(6px,2.6vw,22px)] translate-y-2 sm:mr-0 sm:translate-y-0"
           >
             <PhoneMockup src={screenSplash} alt="WADE Splash Screen" />
           </motion.div>
@@ -92,7 +93,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="w-[36%] md:w-[32%] z-10 animate-float"
+            className="z-10 w-[clamp(108px,38vw,280px)] animate-float"
           >
             <PhoneMockup src={screenHome} alt="WADE Home Screen" />
           </motion.div>
@@ -100,7 +101,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 40, rotate: 6 }}
             animate={{ opacity: 1, x: 0, rotate: 6 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="w-[28%] md:w-[25%]"
+            className="w-[clamp(76px,29vw,220px)] -ml-[clamp(6px,2.6vw,22px)] translate-y-2 sm:ml-0 sm:translate-y-0"
           >
             <PhoneMockup src={screenSearch} alt="WADE Search Screen" />
           </motion.div>
