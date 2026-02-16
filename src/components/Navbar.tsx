@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -29,7 +29,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <Link to="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img src="/logo-light.svg" alt="WADE" className="h-8" />
         </Link>
 
