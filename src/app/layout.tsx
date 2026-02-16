@@ -6,6 +6,9 @@ import "@/index.css";
 export const metadata: Metadata = {
   title: "WADE",
   description: "WADE delivery platform landing page",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 type RootLayoutProps = {
