@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -52,12 +52,12 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/privacy" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
+                <Link to="/privacy" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
+                <Link to="/terms" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
                   Terms & Conditions
                 </Link>
               </li>
