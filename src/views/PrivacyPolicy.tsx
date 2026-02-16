@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import LegalContent from "@/components/LegalContent";
+import Footer from "@/components/Footer";
 import { PRIVACY_POLICY_TEXT } from "@/content/legalText";
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-primary py-6">
+      <header className="sticky top-0 z-50 bg-primary py-6 shadow-md">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/">
             <img src="/logo-light.svg" alt="WADE" className="h-8" />
