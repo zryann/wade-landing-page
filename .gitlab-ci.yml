@@ -1,0 +1,19 @@
+include:
+  - project: 'tiptop/ci-cd'
+    file: 'build.yml'
+  - project: 'tiptop/ci-cd'
+    file: 'deploy.yml'
+
+variables:
+  APP_NAME: wade-landing-page
+  KUBERNETES_MEMORY_LIMIT: '2000Mi'
+
+stages:
+  - build
+  - deploy
+
+docker-build:
+  extends: .docker-build
+
+update_manifest:
+  extends: .update_manifest
