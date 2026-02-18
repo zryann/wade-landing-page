@@ -1,23 +1,27 @@
 
-# Choose the Image which has Node installed already
-FROM node:lts-alpine as build-stage
-
+FROM node:lts-alpine AS deps
 WORKDIR /app
-COPY package.json package-lock.json bun.lockb ./
-RUN npm i pkg@5.8.0
+COPY package.json package-lock.json ./
 RUN npm ci
+
+FROM node:lts-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
-RUN npx pkg ./node_modules/@import-meta-env/cli/bin/import-meta-env.js -t node18-alpine -o import-meta-env
 
+FROM node:lts-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV HOSTNAME=0.0.0.0
+ENV PORT=3000
 
-FROM nginx:stable-alpine
-RUN mkdir /app
+RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
 
-COPY --from=build-stage /app/dist /app/dist
-COPY --from=build-stage /app/import-meta-env /app/import-meta-env
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-COPY start.sh /app/start.sh
-COPY nginx.conf /etc/nginx/nginx.conf
-
-ENTRYPOINT ["sh","/app/start.sh"]
+USER nextjs
+EXPOSE 3000
+CMD ["node", "server.js"]
