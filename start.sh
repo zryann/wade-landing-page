@@ -1,6 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-
-cd /app/dist
-nginx -g 'daemon off;'
+exec node server.js
