@@ -3,7 +3,7 @@
 FROM node:lts-alpine as build-stage
 
 WORKDIR /app
-COPY package.json bun.lockb ./
+COPY package.json package-lock.json bun.lockb ./
 RUN npm i pkg@5.8.0
 RUN npm ci
 COPY . .
